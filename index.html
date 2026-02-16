@@ -228,6 +228,65 @@
             header { flex-direction:column; gap:14px; text-align:center; }
             .brand-left, .brand-right { justify-content:center; }
         }
+
+        /* =========================
+   GALERI KEGIATAN MODERN
+========================= */
+
+.gallery-section {
+    text-align: center;
+}
+
+.btn-gallery {
+    background: linear-gradient(135deg, #111 0%, #333 100%);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.btn-gallery:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.25);
+}
+
+.gallery-container {
+    margin-top: 20px;
+    display: none;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.gallery-container.show {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+    opacity: 1;
+    animation: fadeUpGallery 0.6s ease;
+}
+
+@keyframes fadeUpGallery {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.gallery-container img {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+.gallery-container img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+                }
+            
     </style>
 </head>
 <body>
@@ -386,6 +445,19 @@
             <p style="margin:6px 0 0;color:var(--muted);">SMAM 8 Sukodadi - Merjoyo,Sukodadi Kec, Sukodadi Kab, Lamongan Prov, Jawa Timur</p>
             <p style="margin:6px 0 0;color:var(--muted);">Email: adminIpmSmam8 · Telp: +62-851-3712-2268</p>
         </section>
+
+        <section class="card gallery-section">
+    <h2 style="margin-top:0;color:#222;">Galeri Kegiatan</h2>
+    <button class="btn-gallery" onclick="toggleGallery()">Lihat Foto Kegiatan</button>
+
+    <div class="gallery-container" id="galleryBox">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f">
+        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7">
+        <img src="https://images.unsplash.com/photo-1515168833906-d2a3b82b302a">
+        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998">
+    </div>
+        </section>
+        
     </main>
 
     <footer class="site" role="contentinfo">
@@ -421,7 +493,14 @@
         });
 
         // Optional: tampilkan bidang pertama saat halaman dimuat
-        document.addEventListener('DOMContentLoaded', function(){ showBidang('perkaderan'); });
+        document.addEventListener('DOMContentLoaded', function(){ showBidang('perkaderan'); 
+           });
+
+        function toggleGallery(){
+    const gallery = document.getElementById("galleryBox");
+    gallery.classList.toggle("show");
+        }
+        
     </script>
 </body>
 </html>
